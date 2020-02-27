@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HuellasModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="acudientes">
+          <Key>
+            <PropertyRef Name="idAcudientes" />
+          </Key>
+          <Property Name="idAcudientes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="NumeroDocumento" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Parentesco" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="FechaIngreso" Type="date" Nullable="false" />
+          <Property Name="RegistroBiometrico" Type="text" />
+          <Property Name="Nombres" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idTipoDocumento" Type="int" />
+          <Property Name="idBeneficiarios" Type="int" />
+          <Property Name="idGenero" Type="int" />
+          <Property Name="RegistroBiometrico1" Type="text" />
+        </EntityType>
+        <EntityType Name="uibiometrico">
+          <Key>
+            <PropertyRef Name="idhuella" />
+          </Key>
+          <Property Name="idhuella" Type="int" Nullable="false" />
+          <Property Name="Huella" Type="blob" Nullable="false" />
+          <Property Name="Huella2" Type="blob" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HuellasModelStoreContainer">
+          <EntitySet Name="acudientes" EntityType="Self.acudientes" Schema="bienestasoft" store:Type="Tables" />
+          <EntitySet Name="uibiometrico" EntityType="Self.uibiometrico" Schema="bienestasoft" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HuellasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="acudiente">
+          <Key>
+            <PropertyRef Name="idAcudientes" />
+          </Key>
+          <Property Name="idAcudientes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Apellidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumeroDocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parentesco" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" />
+          <Property Name="RegistroBiometrico" Type="String" />
+          <Property Name="Nombres" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idTipoDocumento" Type="Int32" />
+          <Property Name="idBeneficiarios" Type="Int32" />
+          <Property Name="idGenero" Type="Int32" />
+          <Property Name="RegistroBiometrico1" Type="String" />
+        </EntityType>
+        <EntityType Name="uibiometrico">
+          <Key>
+            <PropertyRef Name="idhuella" />
+          </Key>
+          <Property Name="idhuella" Type="Int32" Nullable="false" />
+          <Property Name="Huella" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Huella2" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="HuellasDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="acudientes" EntityType="Self.acudiente" />
+          <EntitySet Name="uibiometricoes" EntityType="Self.uibiometrico" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HuellasModelStoreContainer" CdmEntityContainer="HuellasDBEntities">
+          <EntitySetMapping Name="acudientes">
+            <EntityTypeMapping TypeName="HuellasModel.acudiente">
+              <MappingFragment StoreEntitySet="acudientes">
+                <ScalarProperty Name="idAcudientes" ColumnName="idAcudientes" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+                <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="RegistroBiometrico" ColumnName="RegistroBiometrico" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
+                <ScalarProperty Name="idBeneficiarios" ColumnName="idBeneficiarios" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="RegistroBiometrico1" ColumnName="RegistroBiometrico1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uibiometricoes">
+            <EntityTypeMapping TypeName="HuellasModel.uibiometrico">
+              <MappingFragment StoreEntitySet="uibiometrico">
+                <ScalarProperty Name="Huella2" ColumnName="Huella2" />
+                <ScalarProperty Name="idhuella" ColumnName="idhuella" />
+                <ScalarProperty Name="Huella" ColumnName="Huella" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
